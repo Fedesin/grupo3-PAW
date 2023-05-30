@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Paw\Core\Router;
 use Paw\Core\Config;
+use Paw\Core\Request;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -18,7 +19,10 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-$router = new Router;
+$request = new Request;
+
+
+$router = new Router('ErrorController@notFound', 'ErrorController@internalError');
 $router->get('/', 'PageController@index');
 $router->get('/consultarturno', 'ConsultasController@consultarturno');
 $router->get('/solicitarturno', 'ConsultasController@solicitarturno');
@@ -30,8 +34,6 @@ $router->get('/valores', 'PageController@valores');
 $router->get('/noticias', 'PageController@noticias');
 $router->get('/obra-social', 'PageController@obrasocial');
 $router->get('/especialidades-profesionales', 'PageController@especialidadesprofesionales');
-$router->get('not_found', 'ErrorController@notFound');
-$router->get('internal_error', 'ErrorController@internalError');
 $router->get("/sala-espera", "ConsultasController@salaEspera");
 $router->get("/atender-turnos", "ConsultasController@turnos");
 $router->get("/finalizar-turno", "ConsultasController@finalizar");
