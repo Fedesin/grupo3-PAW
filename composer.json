@@ -24,7 +24,8 @@
         "php":">=8",
         "filp/whoops":"~2",
         "monolog/monolog": "^3.3",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "robmorgan/phinx": "^0.13.4"
     },
     "autoload":{
         "psr-4": {
