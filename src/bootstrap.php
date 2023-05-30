@@ -23,6 +23,7 @@ $request = new Request;
 
 
 $router = new Router('ErrorController@notFound', 'ErrorController@internalError');
+$router->setLogger($log);
 $router->get('/', 'PageController@index');
 $router->get('/consultarturno', 'ConsultasController@consultarturno');
 $router->get('/solicitarturno', 'ConsultasController@solicitarturno');
