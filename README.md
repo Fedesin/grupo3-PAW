@@ -7,9 +7,11 @@ Ejecutar los siguientes comandos:
 * composer install
 * cp .env.example .env
 
-Instalar y habilitar las extensiones de pgsql para php
+Instalar y habilitar las extensiones de pgsql para php y luego ejecutar los siguientes comandos:
 * ./vendor/bin/phinx migrate -e development
 * php -S localhost:8080 -t public/
+
+Finalmente ingresas a la dirección http://localhost:8080/ y ualá!
 
 
 ## *Integrantes*
