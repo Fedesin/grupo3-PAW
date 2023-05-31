@@ -32,7 +32,7 @@ return
             'name' => getenv("DB_DBNAME") ?? 'development_db',
             'user' => getenv("DB_USERNAME")??'root',
             'pass' => getenv("DB_PASSWORD")??'',
-            'port' => getenv("DB_PORT")??'3306',
+            'port' => getenv("DB_PORT")??'5432',
             'charset' => getenv("DB_CHARSET")??'utf8',
         ],
         'testing' => [

@@ -13,9 +13,7 @@
             response.json().then(data => {
               let contenedor = document.querySelector("main > ul");
               contenedor.replaceChildren();
-
-              console.log()
-
+              
               for (let key in data.lista_turnos) {
                 let turno = data.lista_turnos[key];
                 let fila = PAW.nuevoElemento("li", "");
