@@ -70,9 +70,9 @@ final class PrimerasTablasMigration extends AbstractMigration
     
         $dataProfesionales = array(
                     [
-                        'nombre' => 'Francisco Hernan',
-                        'apellido' => 'Rodriguez',
-                        'matricula' => '129088',
+                        'nombre' => 'Juan',
+                        'apellido' => 'Perez',
+                        'matricula' => '143054',
                         'id_especialidad' => '1',
                         'duracionTurno' => '30',
                         'estado' => 'activo',
@@ -80,17 +80,17 @@ final class PrimerasTablasMigration extends AbstractMigration
                         'email' => 'director-general@mail.com'
                     ],
                     [
-                        'nombre' => 'Maria Alejandra',
-                        'apellido' => 'Barrionuevo',
-                        'matricula' => '985263',
+                        'nombre' => 'Roberto',
+                        'apellido' => 'Garcia',
+                        'matricula' => '913453',
                         'id_especialidad' => '2',
                         'duracionTurno' => '20',
                         'estado' => 'activo'
                     ],
                     [
-                        'nombre' => 'Cristian Luis',
-                        'apellido' => 'Martinez',
-                        'matricula' => '675543',
+                        'nombre' => 'Cristian',
+                        'apellido' => 'Gimenez Bundo',
+                        'matricula' => '4023123',
                         'id_especialidad' => '3',
                         'duracionTurno' => '30',
                         'estado' => 'activo',
@@ -98,9 +98,9 @@ final class PrimerasTablasMigration extends AbstractMigration
                         'email' => 'director-cirugia@mail.com'
                     ],
                     [
-                        'nombre' => 'Rocio Maribel',
-                        'apellido' => 'Ledesma',
-                        'matricula' => '209877',
+                        'nombre' => 'Sofia',
+                        'apellido' => 'Torcuato',
+                        'matricula' => '669593',
                         'id_especialidad' => '1',
                         'duracionTurno' => '20',
                         'estado' => 'activo'
