@@ -6,6 +6,7 @@ Ejecutar los siguientes comandos:
 * cd PAW
 * composer install
 * cp .env.example .env
+
 Instalar y habilitar las extensiones de pgsql para php
 * ./vendor/bin/phinx migrate -e development
 * php -S localhost:8080 -t public/
