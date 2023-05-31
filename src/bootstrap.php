@@ -5,6 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use Paw\Core\Router;
 use Paw\Core\Config;
 use Paw\Core\Request;
+use Paw\Core\Database\ConnectionBuilder;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -14,6 +15,11 @@ $handler->setLevel(Config::getLogLevel());
 
 $log = new Logger('mvc-app');
 $log->pushHandler($handler);
+
+$connectionBuilder = new ConnectionBuilder;
+$connectionBuilder->setLogger($log);
+$connection = $connectionBuilder->make();
+
 
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
