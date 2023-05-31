@@ -1,10 +1,13 @@
 # grupo3 - Programación en ambiente web
 
 ## Instalación y ejecución local
+Ejecutar los siguientes comandos:
 * git clone https://github.com/Fedesin/grupo3-PAW.git PAW
 * cd PAW
 * composer install
 * cp .env.example .env
+Instalar y habilitar las extensiones de pgsql para php
+* ./vendor/bin/phinx migrate -e development
 * php -S localhost:8080 -t public/
 
 
