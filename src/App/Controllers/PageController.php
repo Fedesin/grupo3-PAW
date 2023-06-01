@@ -2,9 +2,11 @@
 
 namespace Paw\App\Controllers;
 use Paw\Core\Validator;
+use Paw\App\Models\Profesional;
 
 class PageController extends BaseController
 {
+    public ?string $modelName;   
     public function __construct()
     {
         parent::__construct();
@@ -37,6 +39,7 @@ class PageController extends BaseController
 
     public function especialidadesprofesionales()
     { 
+        $modelName=Profesional::class;
         //Traer personas de la base con el filtro seleccionado
         $personas = [
             [

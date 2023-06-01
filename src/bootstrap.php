@@ -44,3 +44,4 @@ $router->get('/especialidades-profesionales', 'PageController@especialidadesprof
 $router->get("/sala-espera", "ConsultasController@salaEspera");
 $router->get("/atender-turnos", "ConsultasController@turnos");
 $router->get("/finalizar-turno", "ConsultasController@finalizar");
+
