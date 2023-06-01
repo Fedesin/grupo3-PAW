@@ -2,14 +2,15 @@
 
 namespace Paw\App\Controllers;
 
-use Paw\Core\Model;
+use Paw\App\Models\Model;
 use Paw\Core\Database\QueryBuilder;
+use Paw\App\Models;
 
 class BaseController
 {
     private string $viewsDir;
 
-    private ?string $modelName = null;
+    protected ?string $modelName = null;
 
 
 
@@ -19,7 +20,8 @@ class BaseController
         $this->viewsDir = __DIR__ . "/../Views/";
         if(!is_null($this->modelName)){
             $qb = new QueryBuilder($connection, $log);
-            $model = new $this->modelName;
+            $modelClass = "\\Paw\\App\\Models\\{$this->modelName}";
+            $model = new $modelClass;
             $model->setQueryBuilder($qb);
             $this->setModel($model);
         }

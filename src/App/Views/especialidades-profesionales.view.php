@@ -40,8 +40,8 @@
         <input name="profesional" list="listaProfesionales">
         <datalist id="listaProfesionales">
           <option value="" selected hidden disabled>Seleccione</option>
-          <?php foreach ($data as $persona): ?>
-              <option value="<?php echo $persona["nombre"]; ?>"><?php echo $persona["nombre"]; ?></option>
+          <?php foreach ($profesionales as $profesional): ?>
+              <option value="<?php echo $profesional->field["nombre"]; ?>"><?php echo $profesional->field["nombre"]; ?></option>
           <?php endforeach; ?>
         </datalist>
 

@@ -15,7 +15,11 @@ class QueryBuilder
 
     public function select()
     {
-
+        $query = "select * from {$table}";
+        $sentencia = $this->pdo->prepare($query);
+        $sentencia -> setFetchMode(PDO::FETCH_ASSOC);
+        $sentencia->execute(); 
+        return $sentencia->fetchAll();
     }
 
     public function insert()

@@ -1,11 +1,11 @@
 <?php
 
-namespace Paw\Core;
+namespace Paw\App\Models;
 
 use Paw\Core\Database\QueryBuilder;
 use Paw\Core\Traits\Loggable;
 
-class Models
+class Model
 {
     use Loggable;
 

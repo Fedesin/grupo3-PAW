@@ -40,7 +40,7 @@ $router->get('/staff', 'PageController@staff');
 $router->get('/valores', 'PageController@valores');
 $router->get('/noticias', 'PageController@noticias');
 $router->get('/obra-social', 'PageController@obrasocial');
-$router->get('/especialidades-profesionales', 'PageController@especialidadesprofesionales');
+$router->get('/especialidades-profesionales', 'ProfesionalesController@especialidadesprofesionales');
 $router->get("/sala-espera", "ConsultasController@salaEspera");
 $router->get("/atender-turnos", "ConsultasController@turnos");
 $router->get("/finalizar-turno", "ConsultasController@finalizar");
