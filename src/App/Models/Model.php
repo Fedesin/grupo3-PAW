@@ -25,6 +25,25 @@ class Model
 
     public function __set($name, $value)
     {
-        $this->fields[$name] = $value;
+        $method = "set" . ucfirst($name);
+        if(method_exists($this, $method)) {
+            if($name == "nombre")
+                echo "Existe\n";
+            $this->$method($value);
+        } else if (array_key_exists($name, $this->fields)) {
+            if($name == "nombre")
+                echo "No existe";
+            $this->fields[$name] = $value;
+        }
+    }
+
+    public function set(array $values)
+    {
+        foreach (array_keys($this->fields) as $field) {
+            if (!isset($values[$field]))
+                continue;
+            
+            $this->$field = $values[$field];
+        }
     }
 }
