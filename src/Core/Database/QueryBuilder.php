@@ -13,7 +13,7 @@ class QueryBuilder
         $this->logger = $logger;
     }
 
-    public function select()
+    public function select($table)
     {
         $query = "select * from {$table}";
         $sentencia = $this->pdo->prepare($query);

@@ -5,7 +5,6 @@ use Paw\Core\Validator;
 
 class PageController extends BaseController
 {
-    public ?string $modelName;   
     public function __construct()
     {
         parent::__construct();

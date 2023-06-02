@@ -2,21 +2,23 @@
 
 namespace Paw\App\Controllers;
 use Paw\Core\Validator;
-use Paw\App\Models\Profesional;
+use Paw\App\Models\ProfesionalesCollection;
 
 class ProfesionalesController extends BaseController
 {
-    public ?string $modelName = ProfesionalesCollection::class;   
     public function __construct()
     {
-        $this->modelName=\ProfesionalesCollection::class;
+        $this->modelName = ProfesionalesCollection::class;
         parent::__construct();
     }
 
     public function especialidadesprofesionales()
     { 
-        $titulo="Profesional";
-        $profesionales= $this->model->getAll();
-        require $this->viewDir . 'especialidades-profesionales.view.php';
+        $titulo = "Profesional";
+        $profesionales = $this->model->getAll();
+
+        parent::showView('especialidades-profesionales.view.php', [
+            "profesionales" => $profesionales
+        ]);
     }
 }

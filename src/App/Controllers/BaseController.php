@@ -12,17 +12,15 @@ class BaseController
 
     protected ?string $modelName = null;
 
-
-
     public function __construct()
     {
         global $connection, $log;
         $this->viewsDir = __DIR__ . "/../Views/";
         if(!is_null($this->modelName)){
             $qb = new QueryBuilder($connection, $log);
-            $modelClass = "\\Paw\\App\\Models\\{$this->modelName}";
-            $model = new $modelClass;
+            $model = new $this->modelName;
             $model->setQueryBuilder($qb);
+
             $this->setModel($model);
         }
     }
@@ -31,7 +29,6 @@ class BaseController
     {
         $this->model = $model;
     }
-
 
     protected function showView(String $view, array $data = null)
     {
