@@ -42,4 +42,17 @@ class Model
             $this->$field = $values[$field];
         }
     }
+
+    public function load($id)
+    {
+        $where = [
+            "id" => $id
+        ];
+
+        $record = current($this->queryBuilder->select($this->table, $where));
+        if($record == false)
+            throw new Exception("Model not found");
+
+        $this->set($record);
+    }
 }

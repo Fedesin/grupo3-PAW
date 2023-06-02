@@ -4,7 +4,7 @@ namespace Paw\App\Models;
 
 class ProfesionalesCollection extends Model
 {
-    private $table = "profesionales";
+    protected $table = "profesionales";
 
     public function getAll()
     {
@@ -19,5 +19,13 @@ class ProfesionalesCollection extends Model
         }
         
         return $profesionalesCollection;
+    }
+
+    public function get($id) {
+        $profesional = new Profesional;
+        $profesional->setQueryBuilder($this->queryBuilder);
+        $profesional->load($id);
+
+        return $profesional;
     }
 }
