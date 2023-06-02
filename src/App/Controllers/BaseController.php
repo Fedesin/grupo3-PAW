@@ -32,9 +32,9 @@ class BaseController
 
     protected function showView(String $view, array $data = null)
     {
-        if (isset($data)) {
+        if (isset($data))
             extract($data);
-        }
+        
         require $this->viewsDir . $view;
     }
 

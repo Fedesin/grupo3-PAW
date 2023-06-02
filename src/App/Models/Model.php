@@ -27,12 +27,8 @@ class Model
     {
         $method = "set" . ucfirst($name);
         if(method_exists($this, $method)) {
-            if($name == "nombre")
-                echo "Existe\n";
             $this->$method($value);
         } else if (array_key_exists($name, $this->fields)) {
-            if($name == "nombre")
-                echo "No existe";
             $this->fields[$name] = $value;
         }
     }
