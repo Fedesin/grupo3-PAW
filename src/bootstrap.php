@@ -29,8 +29,23 @@ $whoops->register();
 
 $request = new Request;
 
-$loader = new FilesystemLoader(__DIR__ . "/App/Views/");
-$twig = new \Twig\Environment($loader);
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/App/Views/");
+
+// Define the path for the cache directory
+$cachePath = __DIR__ . "/App/Views/cache";
+
+// Create the cache directory if it doesn't exist
+if (!is_dir($cachePath)) {
+    mkdir($cachePath);
+}
+
+// Configure Twig to use the cache directory
+$twig = new \Twig\Environment($loader, [
+    'cache' => $cachePath,
+]);
+
+// You can also set other Twig options as needed
+$twig->setCache($cachePath);
 
 $router = new Router('ErrorController@notFound', 'ErrorController@internalError');
 $router->setLogger($log);

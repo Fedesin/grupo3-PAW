@@ -1,3 +1,6 @@
 vendor/
 logs/
 .env
+src/App/Views/cache/
+
+
