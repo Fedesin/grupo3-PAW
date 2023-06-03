@@ -12,27 +12,27 @@ class PageController extends BaseController
 
     public function index()
     {
-        parent::showView('index.view.php');
+        parent::showView('index.view.twig');
     }
 
     public function staff()
     {
-        parent::showView('staff.view.php');
+        parent::showView('staff.view.twig');
     }
 
     public function valores()
     {
-        parent::showView('valores.view.php');
+        parent::showView('valores.view.twig');
     }
 
     public function noticias()
     {
-        parent::showView('noticias.view.php');
+        parent::showView('noticias.view.twig');
     }
 
     public function obrasocial()
     {
-        parent::showView('obra-social.view.php');
+        parent::showView('obra-social.view.twig');
     }
 
     public function especialidadesprofesionales()
@@ -84,6 +84,6 @@ class PageController extends BaseController
             }
         }
     
-        parent::showView('especialidades-profesionales.view.php',$personas);
+        parent::showView('especialidades-profesionales.view.twig',$personas);
     }
 }

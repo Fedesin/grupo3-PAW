@@ -15,7 +15,7 @@ class BaseController
     public function __construct()
     {
         global $connection, $log;
-        $this->viewsDir = __DIR__ . "/../Views/";
+        //$this->viewsDir = __DIR__ . "/../Views/";
         if(!is_null($this->modelName)){
             $qb = new QueryBuilder($connection, $log);
             $model = new $this->modelName;
@@ -32,10 +32,12 @@ class BaseController
 
     protected function showView(String $view, array $data = null)
     {
+        global $twig;
         if (isset($data))
             extract($data);
         
-        require $this->viewsDir . $view;
+        $template = $twig->load($view);
+        echo $template->render();
     }
 
     protected function json($data)

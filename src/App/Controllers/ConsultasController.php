@@ -12,17 +12,17 @@ class ConsultasController extends BaseController
 
     public function consultarturno()
     {
-        parent::showView('consultarturno.view.php');
+        parent::showView('consultarturno.view.twig');
     }
 
     public function solicitarturno()
     {
-        parent::showView('solicitarturno.view.php', $_GET);
+        parent::showView('solicitarturno.view.twig', $_GET);
     }
 
     public function confirmardatos()
     {
-        parent::showView('confirmardatos.view.php');
+        parent::showView('confirmardatos.view.twig');
     }
 
     public function solicitarturnoProcess()
@@ -96,9 +96,9 @@ class ConsultasController extends BaseController
         }
 
         if($valido) {
-            parent::showView('confirmardatos.view.php', $data);
+            parent::showView('confirmardatos.view.twig', $data);
         } else {
-            parent::showView('solicitarturno.view.php', $data);
+            parent::showView('solicitarturno.view.twig', $data);
         }
     }
 
@@ -107,7 +107,7 @@ class ConsultasController extends BaseController
         //Acá usamos los datos de la sesión para no revalidar
         //Hay que guardar en la db y mostrar pantalla de éxito
 
-        parent::showView('confirmardatos.view.php', [ 'enviado' => true ]);      
+        parent::showView('confirmardatos.view.twig', [ 'enviado' => true ]);      
     }
 
     public function consultarturnoProcess()
@@ -150,7 +150,7 @@ class ConsultasController extends BaseController
             return parent::json($json);
         }
 
-        parent::showView('salaespera.view.php');
+        parent::showView('salaespera.view.twig');
     }
 
     public function turnos()
@@ -187,7 +187,7 @@ class ConsultasController extends BaseController
             return parent::json($json);
         }
 
-        parent::showView('atenderturnos.view.php');
+        parent::showView('atenderturnos.view.twig');
     }
 
     public function finalizar()

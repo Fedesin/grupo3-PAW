@@ -9,6 +9,8 @@ use Paw\Core\Database\ConnectionBuilder;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Twig\Loader\FilesystemLoader;
+
 
 $handler = new StreamHandler(__DIR__ . "/../" . Config::getLogFile());
 $handler->setLevel(Config::getLogLevel());
@@ -27,6 +29,8 @@ $whoops->register();
 
 $request = new Request;
 
+$loader = new FilesystemLoader(__DIR__ . "/App/Views/");
+$twig = new \Twig\Environment($loader);
 
 $router = new Router('ErrorController@notFound', 'ErrorController@internalError');
 $router->setLogger($log);

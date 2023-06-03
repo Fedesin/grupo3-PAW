@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.twig' %}
 
-  <head>
-    <?php
-      require 'parts/head.view.php';
-    ?>
-  </head>
-
-  <body>
-    <!--header-->
-    <?php
-      require 'parts/header.view.php';
-    ?>
-    <!--header-->
-    <!--navbar-->
-    <?php
-      require 'parts/nav.view.php';
-    ?>
-    <!--navbar-->
-    <!--body-->
+{% block content %}
     <main class="valores"><h2>Nuestros valores y objetivos</h2>
       <ul>
         <li>
@@ -49,8 +31,8 @@
     <!--body-->
     <!--footer-->
     <?php
-      require 'parts/footer.view.php';
+      require 'parts/footer.view.twig';
     ?>
     <!--footer-->
   </body>
-</html>
+{% endblock %}

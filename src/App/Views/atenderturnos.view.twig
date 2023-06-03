@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.twig' %}
 
-  <head>
-    <?php
-      require 'parts/head.view.php';
-    ?>
-
+{% block head %}
     <script type="text/javascript">
       function actualizarTurnos() {
         fetch("/atender-turnos?type=json")
@@ -58,20 +53,11 @@
         actualizarTurnos();
       });
     </script>
-  </head>
 
-  <body>
-    <!--header-->
-    <?php
-      require 'parts/header.view.php';
-    ?>
-    <!--header-->
-    <!--navbar-->
-    <?php
-      require 'parts/nav.view.php';
-    ?>
-    <!--navbar-->
-    <!--body-->
+{% endblock %}
+
+{% block content%}
+
     <main class="atender-turnos">
       <h2>Atender Turnos</h2>
       
@@ -124,11 +110,4 @@
 
       </ul>
     </main>
-    <!--body-->
-    <!--footer-->
-    <?php
-      require 'parts/footer.view.php';
-    ?>
-    <!--footer-->
-  </body>
-</html>
+{% endblock %}

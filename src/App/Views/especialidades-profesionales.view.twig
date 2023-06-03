@@ -1,0 +1,51 @@
+{% extends 'base.twig' %}
+
+{% block head %}
+    <script>
+        var data = {{ data|json_encode|raw }};
+    </script>
+    <script src="assets/js/components/filtro.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <main class="grilla">
+        <h2>Especialidades y profesionales</h2>
+
+        <form method="GET">
+            <label for="listaEspecialidades">Escoja una especialidad</label>
+            <input name="especialidad" list="listaEspecialidades">
+            <datalist id="listaEspecialidades">
+                <option value="" selected hidden disabled>Seleccione</option>
+                <option value="Psiquiatria">Psiquiatría</option>
+                <option value="Ortopedia">Ortopedía</option>
+                <option value="Neurologia">Neurología</option>
+                <option value="Cardiologia">Cardiología</option>
+            </datalist>
+
+            <label for="listaProfesionales">Escoja un/a profesional</label>
+            <input name="profesional" list="listaProfesionales">
+            <datalist id="listaProfesionales">
+                <option value="" selected hidden disabled>Seleccione</option>
+                {% for profesional in profesionales %}
+                    <option value="{{ profesional.nombre }}">{{ profesional.nombre }}</option>
+                {% endfor %}
+            </datalist>
+
+            <input type="submit" value="Continuar" />
+        </form>
+
+        <hr />
+        <div class="paginar">
+            <label> Personas por pagina</label>
+            <input id="cantPaginas" type="number" value="6" />
+            <button id="pagAnt"> < </button>
+            <label> Pag.</label>
+            <input id="paginaIndice" type="number" value="1" min="0"/>
+            <button id="pagSig"> > </button>
+        </div>
+        <ul id="listaPersonas">
+        </ul>
+
+    </main>
+{% endblock %}

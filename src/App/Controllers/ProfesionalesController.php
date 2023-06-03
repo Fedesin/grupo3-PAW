@@ -17,7 +17,7 @@ class ProfesionalesController extends BaseController
         $titulo = "Profesional";
         $profesionales = $this->model->getAll();
 
-        parent::showView('especialidades-profesionales.view.php', [
+        parent::showView('especialidades-profesionales.view.twig', [
             "profesionales" => $profesionales
         ]);
     }

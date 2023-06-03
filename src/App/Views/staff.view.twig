@@ -1,24 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.twig' %}
 
-  <head>
-    <?php
-      require 'parts/head.view.php';
-    ?>
-  </head>
-
-  <body>
-    <!--header-->
-    <?php
-      require 'parts/header.view.php';
-    ?>
-    <!--header-->
-    <!--navbar-->
-    <?php
-      require 'parts/nav.view.php';
-    ?>
-    <!--navbar-->
-    <!--body-->
+{% block content %}
     <main class="grilla"><h2>Directorio</h2>
 
       <ul>
@@ -84,11 +66,4 @@
         </li>
       </ul>
     </main>
-    <!--body-->
-    <!--footer-->
-    <?php
-      require 'parts/footer.view.php';
-    ?>
-    <!--footer-->
-  </body>
-</html>
+ {% endblock %}

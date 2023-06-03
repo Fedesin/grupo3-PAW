@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UNLu PAW UL Hospitals</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+    <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    <script src="/assets/js/components/paw.js"></script>
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <h1>
+      <a href="/"></a>
+      <form class="Buscador">
+          <input type="text" id="search" name="search" placeholder=" Escribe aquí tu búsqueda" class="search-box"/>
+          <input class="lupa" type="submit" value="&#128269;" class="search-box"/>
+      </form>
+      </h1>
+    </header>
+    <nav>
+      <input id="hamburgerMenu" type="checkbox" name="">
+      <label for="hamburgerMenu" class="hamburgerMenu"></label>
+      <!--
+      <img class="hamburgerMenu" src="img/menu-icon.svg"  />
+      -->
+      <ul>
+      <li class ="navbarDropOption">
+          <a>Turnos</a>
+          <ul>
+          <li><a href="consultarturno">Consultar Turno</a></li>
+          <li><a href="solicitarturno">Solicitar Turnos</a></li>
+          </ul>
+      </li>
+      <li class ="navbarDropOption">
+          <a>Institucional</a>
+          <ul class ="navbarDropOption">
+          <li><a href="staff">Staff</a></li>
+          <li><a href="valores">Valores</a></li>
+          </ul>
+      </li>
+      <li><a href="noticias">Noticias</a></li>
+      <li><a href="obra-social">Obra Social</a></li>
+      <li><a href="especialidades-profesionales">Especialidades y profesionales</a></li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer>
+      <ul>
+          <li class="certificadoFooter">
+              <h4>Avalado por</h4>
+              <a class="logoCertificadoFooter" href="https://www.argentina.gob.ar/salud"target=_blank></a>
+          </li>
+          <li class="contactoFooter">
+              <h4>Contacto</h4>
+              <address>
+                  <ul>
+                      <li><a class="mail" href="mailto:juanperez@email.com">Correo electrónico: juanperez@email.com</a></li>
+                      <li>Teléfono: +1 (555) 555-5555</li>
+                      <li>Dirección: 123 Calle Principal, Luján, 6700</li>
+                  </ul>
+              </address>
+          </li>
+          <li class="redesFooter">
+              <h4>Redes</h4>
+              <ul>
+                  <li>
+                      <a href="https://instagram.com"target=_blank><img src="/assets/img/instagram.png" width="48" height="48" /></a>
+                  </li>
+                  <li>
+                      <a href="https://twitter.com"target=_blank><img src="/assets/img/twitter.png" width="48" height="48" /></a>
+                  </li>
+                  <li>
+                      <a href="https://facebook.com"target=_blank><img src="/assets/img/facebook.png" width="48" height="48" /></a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </footer>
+  </body>
+</html>

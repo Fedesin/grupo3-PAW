@@ -1,0 +1,92 @@
+{% extends 'base.twig' %}
+
+{% block head %}
+    <script src="/assets/js/components/appDragDrop.js"></script>
+    <script src="/assets/js/components/turnero.js"></script>
+{% endblock %}
+
+{% block content %}
+    <main class="formulario">
+        <h2>Solicitar Turno</h2>
+        <form action="solicitarturno" method="POST" tabindex="0" enctype="multipart/form-data">
+            <label>Nombre y apellido:</label>
+            <input name="nombre_apellido" type="text" placeholder="juan perez" tabindex="1" {% if nombre_apellido is defined %}value="{{ nombre_apellido }}"{% endif %}/>
+            {% if nombre_apellido_invalido is defined %}
+                {% for error in nombre_apellido_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <label>Correo electrónico</label>
+            <input name="email" type="email" placeholder="juanpe@gmail.com" tabindex="2" {% if email is defined %}value="{{ email }}"{% endif %}/>
+            {% if email_invalido is defined %}
+                {% for error in email_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <label>DNI</label>
+            <input name="dni" type="number" inputmode="numeric" placeholder="34111111" tabindex="3" {% if dni is defined %}value="{{ dni }}"{% endif %}/>
+            {% if dni_invalido is defined %}
+                {% for error in dni_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <label>Teléfono:</label>
+            <input name="telefono" type="tel" placeholder="2323 123456" tabindex="4" {% if telefono is defined %}value="{{ telefono }}"{% endif %}/>
+            {% if telefono_invalido is defined %}
+                {% for error in telefono_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <label>Fecha de nacimiento:</label>
+            <input name="fecha_nacimiento" type="date" tabindex="5" {% if fecha_nacimiento is defined %}value="{{ fecha_nacimiento }}"{% endif %}/>
+            {% if fecha_nacimiento_invalido is defined %}
+                {% for error in fecha_nacimiento_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <label for="listaEspecialidades">Escoja una especialidad</label>
+            <input name="especialidad" list="listaEspecialidades" tabindex="6" {% if especialidad is defined %}value="{{ especialidad }}"{% endif %}>
+            <datalist id="listaEspecialidades">
+                <option value="" selected hidden disabled>Seleccione</option>
+                <option value="Psiquiatria">Psiquiatría</option>
+                <option value="Ortopedia">Ortopedía</option>
+                <option value="Neurologia">Neurología</option>
+                <option value="Cardiologia">Cardiología</option>
+            </datalist>
+
+            <label for="listaProfesional">Escoja un/a profesional</label>
+            <input type="text" id="listaProfesional" list="listaProfesionales" tabindex="7">
+            <datalist id="listaProfesionales">
+                <option value="" selected hidden disabled>Seleccione</option>
+                <option value="Dr. Juan Pérez">
+                <option value="Dra. María Gómez">
+                <option value="Dr. Carlos López">
+            </datalist>
+
+            <button class="dias-horarios">Cargar días y horarios</button>
+            <label for="fecha_turno">Fechas disponibles</label>
+            <select name="fecha_turno" id="fecha_turno" tabindex="9"></select>
+            <label for="hora_turno">Hora del turno</label>
+            <select name="hora_turno"  id="hora_turno" tabindex="10"></select>
+
+            <label for="estudio">Estudio</label>
+            <input id="dropzone" name="estudio[]" type="file" accept=".png,.jpg,.jpeg" tabindex="8" multiple>
+            <div id="preview"> </div>
+            {% if estudio_invalido is defined %}
+                {% for error in estudio_invalido %}
+                    <label class="dato-invalido">{{ error }}</label>
+                {% endfor %}
+            {% endif %}
+
+            <div class="form-buttons">
+                <a class="btn" href="/" tabindex="12">Cancelar</a>
+                <input type="submit" value="Confirmar" tabindex="11" >
+            </div>
+        </form>
+    </main>
+{% endblock %}
