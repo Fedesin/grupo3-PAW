@@ -58,11 +58,16 @@ class ConsultasController extends BaseController
             $valido = false;
         }
 
-        $errors = Validator::validar_fecha($data['fecha_turno'], true);
-        if(count($errors) > 0) {
-            $data['fecha_turno_invalido'] = $errors;
-            $valido = false;
+        if(isset($data['fecha_turno'])) {
+            $errors = Validator::validar_fecha($data['fecha_turno'], true);
+            if(count($errors) > 0) {
+                $data['fecha_turno_invalido'] = $errors;
+                $valido = false;
+            }
+        } else {
+            $data['fecha_turno_invalido'] = ["Campo obligatorio"];
         }
+        
 
         $errors = Validator::validar_email($data['email']);
         if(count($errors) > 0) {
@@ -71,28 +76,33 @@ class ConsultasController extends BaseController
         }
 
         $files = $_FILES['estudio'];
-        if(isset($files)){
-        for ($i = 0; $i < count($files['name']); $i++) {
-            $file = [
-                'name' => $files['name'][$i],
-                'type' => $files['type'][$i],
-                'tmp_name' => $files['tmp_name'][$i],
-                'error' => $files['error'][$i],
-                'size' => $files['size'][$i]
-            ];
-            $errors = Validator::validar_imagen($file);
+        if(isset($files)) {
+            for ($i = 0; $i < count($files['name']); $i++) {
+                if(!empty($files['name'][$i])) {
+                    $file = [
+                        'name' => $files['name'][$i],
+                        'type' => $files['type'][$i],
+                        'tmp_name' => $files['tmp_name'][$i],
+                        'error' => $files['error'][$i],
+                        'size' => $files['size'][$i]
+                    ];
+                    $errors = Validator::validar_imagen($file);
+                    if(count($errors) > 0) {
+                        $data['estudio_invalido'] = $errors;
+                        $valido = false;
+                    }
+                }
+            }
+        }
+      
+        if(isset($data['hora_turno'])) {
+            $errors = Validator::validar_hora($data['hora_turno']);
             if(count($errors) > 0) {
-                $data['estudio_invalido'] = $errors;
+                $data['hora_turno_invalido'] = $errors;
                 $valido = false;
             }
-        }}
-      
-
-
-        $errors = Validator::validar_hora($data['hora_turno']);
-        if(count($errors) > 0) {
-            $data['hora_turno_invalido'] = $errors;
-            $valido = false;
+        } else {
+            $data['hora_turno_invalido'] = ["Campo obligatorio"];
         }
 
         if($valido) {

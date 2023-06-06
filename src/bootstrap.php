@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Paw\Core\Router;
 use Paw\Core\Config;
+use Paw\Core\Log;
 use Paw\Core\Request;
 use Paw\Core\Database\ConnectionBuilder;
 
@@ -11,12 +12,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Twig\Loader\FilesystemLoader;
 
-
-$handler = new StreamHandler(__DIR__ . "/../" . Config::getLogFile());
-$handler->setLevel(Config::getLogLevel());
-
-$log = new Logger('mvc-app');
-$log->pushHandler($handler);
+$log = Log::make(__DIR__ . "/../" . Config::getLogFile(), Config::getLogLevel());
 
 $connectionBuilder = new ConnectionBuilder;
 $connectionBuilder->setLogger($log);
@@ -29,7 +25,9 @@ $whoops->register();
 
 $request = new Request;
 
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/App/Views/");
+//$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/App/Views/");
+$loader = new FilesystemLoader(__DIR__ . "/App/Views/");
+$twig = new \Twig\Environment($loader);
 
 // Define the path for the cache directory
 $cachePath = __DIR__ . "/App/Views/cache";
@@ -40,13 +38,13 @@ if (!is_dir($cachePath)) {
 }
 
 // Configure Twig to use the cache directory
-$twig = new \Twig\Environment($loader, [
+/*$twig = new \Twig\Environment($loader, [
     'cache' => $cachePath,
 ]);
 
 // You can also set other Twig options as needed
 $twig->setCache($cachePath);
-
+*/
 $router = new Router('ErrorController@notFound', 'ErrorController@internalError');
 $router->setLogger($log);
 $router->get('/', 'PageController@index');

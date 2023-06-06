@@ -33,8 +33,12 @@ class BaseController
     protected function showView(String $view, array $data = null)
     {
         global $twig;
-        if (isset($data))
-            extract($data);
+        if (isset($data)) {
+            //extract($data);
+            foreach ($data as $key => $value) {
+                $twig->addGlobal($key, $value);
+            }
+        }
         
         $template = $twig->load($view);
         echo $template->render();

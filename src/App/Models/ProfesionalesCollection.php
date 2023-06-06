@@ -4,9 +4,9 @@ namespace Paw\App\Models;
 
 class ProfesionalesCollection extends Model
 {
-    protected $table = "profesionales";
+    protected static $table = "profesionales";
 
-    public function getAll()
+    public static function getAll()
     {
         //crear tantos profesionales como filas de la tabla de profesionales
         $profesionales = $this->queryBuilder->select($this->table);
@@ -21,7 +21,7 @@ class ProfesionalesCollection extends Model
         return $profesionalesCollection;
     }
 
-    public function get($id) {
+    public static function get($id) {
         $profesional = new Profesional;
         $profesional->setQueryBuilder($this->queryBuilder);
         $profesional->load($id);

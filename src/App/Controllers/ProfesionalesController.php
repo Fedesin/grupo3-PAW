@@ -3,6 +3,8 @@
 namespace Paw\App\Controllers;
 use Paw\Core\Validator;
 use Paw\App\Models\ProfesionalesCollection;
+use Paw\App\Models\Profesional;
+
 
 class ProfesionalesController extends BaseController
 {
@@ -15,7 +17,7 @@ class ProfesionalesController extends BaseController
     public function especialidadesprofesionales()
     { 
         $titulo = "Profesional";
-        $profesionales = $this->model->getAll();
+        $profesionales = Profesional::getAll();
 
         parent::showView('especialidades-profesionales.view.twig', [
             "profesionales" => $profesionales

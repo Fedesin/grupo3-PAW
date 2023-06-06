@@ -6,7 +6,7 @@ use Exception;
 
 class Profesional extends Model
 {
-    protected $table = 'profesionales';
+    protected static $table = 'profesionales';
 
     protected $fields = [
         "nombre" => null,

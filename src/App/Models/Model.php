@@ -2,19 +2,27 @@
 
 namespace Paw\App\Models;
 
+use Paw\Core\Database\ConnectionBuilder;
 use Paw\Core\Database\QueryBuilder;
-use Paw\Core\Traits\Loggable;
+//use Paw\Core\Traits\Loggable;
 use Exception;
 
 class Model
 {
-    use Loggable;
+//    use Loggable;
 
     protected $fields = [];
+
+    protected static $table = '';
 
     public function setQueryBuilder(QueryBuilder $qb)
     {
         $this->queryBuilder = $qb;
+    }
+
+    public function __isset($key){
+    if ( isset($this->fields[$key]) ) return true ;
+        return false;
     }
 
     public function __get($name)
@@ -49,10 +57,38 @@ class Model
             "id" => $id
         ];
 
-        $record = current($this->queryBuilder->select($this->table, $where));
+        $record = current($this->queryBuilder->select(static::$table, $where));
         if($record == false)
             throw new Exception("Model not found");
 
         $this->set($record);
+    }
+
+    public static function getAll()
+    {
+        $qb = new QueryBuilder(ConnectionBuilder::getInstance());
+
+        $instances = $qb->select(static::$table);
+        $collection = [];
+
+        foreach ($instances as $instance) {
+            $class = get_called_class();
+            $newInstance = new $class;
+            $newInstance->set($instance);
+            $collection[] = $newInstance;
+        }
+        
+        return $collection;
+    }
+
+    public static function get($id) {
+        $qb = new QueryBuilder(ConnectionBuilder::getInstance());
+
+        $class = get_called_class();
+        $newInstance = new $class;
+        $newInstance->setQueryBuilder($qb);
+        $newInstance->load($id);
+
+        return $newInstance;
     }
 }
